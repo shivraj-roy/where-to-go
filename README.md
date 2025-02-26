@@ -7,7 +7,7 @@ This project helps you choose a place to visit using the `useEffect` hook in a R
 1. Clone the repository:
 
    ```sh
-   git clone
+   git clone https://github.com/shivraj-roy/where-to-go.git
    cd where-to-go
    ```
 

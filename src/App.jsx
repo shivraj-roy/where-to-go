@@ -6,12 +6,19 @@ import Modal from "./components/Modal.jsx";
 import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
 import logoImg from "./assets/logo.png";
 
+//* Used to fetch the selected places from the server/ database/ local storage...
+const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const storedPlaces = storedIds.map((id) =>
+   AVAILABLE_PLACES.find((place) => place.id === id)
+);
+
 function App() {
    const modal = useRef();
    const selectedPlace = useRef();
    const [availablePlaces, setAvailablePlaces] = useState([]);
-   const [pickedPlaces, setPickedPlaces] = useState([]);
+   const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
 
+   //* Used to get the current location from the user...
    useEffect(() => {
       navigator.geolocation.getCurrentPosition((position) => {
          const sortedPlaces = sortPlacesByDistance(
